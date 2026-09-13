@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List App - Task Manager</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-tasks"></i> My Tasks</h1>
+                <p class="subtitle">Stay organized and productive</p>
+            </div>
+        </header>
+
+        <!-- Main Container -->
+        <main class="main-container">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-list"></i> Categories</h3>
+                    <div class="categories">
+                        <button class="category-btn active" data-category="all">
+                            <span class="category-icon">📋</span> All Tasks
+                        </button>
+                        <button class="category-btn" data-category="today">
+                            <span class="category-icon">📅</span> Today
+                        </button>
+                        <button class="category-btn" data-category="week">
+                            <span class="category-icon">📆</span> This Week
+                        </button>
+                        <button class="category-btn" data-category="completed">
+                            <span class="category-icon">✅</span> Completed
+                        </button>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-tags"></i> Tags</h3>
+                    <div class="tags" id="tagsList"></div>
+                </div>
+
+                <div class="sidebar-section stats">
+                    <h3><i class="fas fa-chart-pie"></i> Statistics</h3>
+                    <div class="stat-item">
+                        <span>Total Tasks:</span>
+                        <strong id="totalTasks">0</strong>
+                    </div>
+                    <div class="stat-item">
+                        <span>Completed:</span>
+                        <strong id="completedTasks">0</strong>
+                    </div>
+                    <div class="stat-item">
+                        <span>Pending:</span>
+                        <strong id="pendingTasks">0</strong>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <section class="content">
+                <!-- Input Section -->
+                <div class="input-section">
+                    <div class="input-group">
+                        <input 
+                            type="text" 
+                            id="todoInput" 
+                            class="todo-input" 
+                            placeholder="Add a new task..."
+                            autocomplete="off"
+                        >
+                        <button id="addBtn" class="btn-add">
+                            <i class="fas fa-plus"></i> Add Task
+                        </button>
+                    </div>
+                    <div class="input-options">
+                        <input 
+                            type="date" 
+                            id="dueDate" 
+                            class="due-date-input"
+                        >
+                        <select id="prioritySelect" class="priority-select">
+                            <option value="low">🟢 Low</option>
+                            <option value="medium" selected>🟡 Medium</option>
+                            <option value="high">🔴 High</option>
+                        </select>
+                        <select id="tagSelect" class="tag-select">
+                            <option value="">Add Tag...</option>
+                            <option value="work">Work</option>
+                            <option value="personal">Personal</option>
+                            <option value="shopping">Shopping</option>
+                            <option value="health">Health</option>
+                            <option value="learning">Learning</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Filter and Sort -->
+                <div class="controls">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        class="search-input" 
+                        placeholder="🔍 Search tasks..."
+                    >
+                    <div class="sort-options">
+                        <select id="sortSelect" class="sort-select">
+                            <option value="date-desc">Newest First</option>
+                            <option value="date-asc">Oldest First</option>
+                            <option value="priority">Priority</option>
+                            <option value="name">Alphabetical</option>
+                        </select>
+                        <button id="clearAllBtn" class="btn-clear-all">
+                            <i class="fas fa-trash"></i> Clear All
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tasks List -->
+                <div class="tasks-container" id="tasksContainer">
+                    <div class="empty-state">
+                        <i class="fas fa-inbox"></i>
+                        <p>No tasks yet. Add one to get started! 🚀</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Theme Toggle -->
+        <button id="themeToggle" class="theme-toggle">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <!-- Modal for task details -->
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
